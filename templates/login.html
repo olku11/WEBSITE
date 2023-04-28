@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<form action="" method="post" class="form">
+    {{ form.hidden_tag() }}
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet"
+              href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+              integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+              crossorigin="anonymous">
+        <title>Привет, Яндекс!</title>
+    </head>
+    <div class="form_item">
+       <p>
+        <label for="email">Почта: </label>
+        {{ form.email(class="form-control", type="email") }}<br>
+        {% for error in form.email.errors %}
+            <p class="alert alert-danger" role="alert">
+                {{ error }}
+            </p>
+        {% endfor %}
+    </p>
+    </div>
+                <div class="form-group">
+    <p>
+        <label for="password">Пароль: </label>
+        {{ form.password(class="form-control", type="password") }}<br>
+        {% for error in form.password.errors %}
+            <p class="alert alert-danger" role="alert">
+                {{ error }}
+            </p>
+        {% endfor %}
+    </p></div>
+    <p>{{ form.submit(type="submit", class="btn btn-primary") }}</p>
+    {{message}}
+</form>
+
+{% endblock %}
